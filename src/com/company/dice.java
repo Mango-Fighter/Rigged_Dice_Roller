@@ -30,16 +30,18 @@ public class dice {
     char roll() {
         int helperNum = r.nextInt(100)+1;
         int a = 100;
+        //adjust side probabilities so they are all different numbers between 1 and 100 with the number increasing as you get further in the array
         for (int i = 0; i < numOfSides; i++) {
             a -= sideProbabilities[i];
             sideProbabilities[i] = 100 - a;
         }
+        //use a randomly generated number and the sideProbabilities array to figure out which side to return.
         for (int i = 0; i < numOfSides; i++) {
-            if (i == 0) {
-                if (helperNum <= sideProbabilities[i]) {return dataOnSides[i];}
+            if (i == numOfSides-1) {
+                if (helperNum >= sideProbabilities[i]) {return dataOnSides[i];}
             }
             else {
-                if (helperNum <= sideProbabilities[i] && helperNum > sideProbabilities[i-1]) {
+                if (helperNum >= sideProbabilities[i] && helperNum < sideProbabilities[i+1]) {
                     return dataOnSides[i];
                 }
             }

@@ -9,8 +9,8 @@ public class Main {
         dice dice2 = new dice(4, new char[]{'1','2','3','4'},false, new int[] {15,15,15,55});
         Random r = new Random();
         while (true) {
-            //char x = dice2.roll();
-            int x = r.nextInt(2);
+            char x = dice1.roll();
+            //int x = r.nextInt(2);
             System.out.println(x);
         }
     }
