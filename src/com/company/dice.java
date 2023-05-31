@@ -28,22 +28,17 @@ public class dice {
 
     }
     char roll() {
-        int helperNum = r.nextInt(100)+1;
-        int a = 100;
-        //adjust side probabilities so they are all different numbers between 1 and 100 with the number increasing as you get further in the array
+        int range = 0;
         for (int i = 0; i < numOfSides; i++) {
-            a -= sideProbabilities[i];
-            sideProbabilities[i] = 100 - a;
+            range += sideProbabilities[i];
         }
-        //use a randomly generated number and the sideProbabilities array to figure out which side to return.
+        int randomNum = r.nextInt(range) + 1;
         for (int i = 0; i < numOfSides; i++) {
-            if (i == numOfSides-1) {
-                if (helperNum >= sideProbabilities[i]) {return dataOnSides[i];}
+            if (randomNum <= sideProbabilities[i]) {
+                return dataOnSides[i];
             }
-            else {
-                if (helperNum >= sideProbabilities[i] && helperNum < sideProbabilities[i+1]) {
-                    return dataOnSides[i];
-                }
+            else if (randomNum > sideProbabilities[i]) {
+                randomNum -= sideProbabilities[i];
             }
         }
         return '⁊';
