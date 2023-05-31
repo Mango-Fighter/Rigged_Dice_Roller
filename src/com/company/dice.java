@@ -43,4 +43,25 @@ public class dice {
         }
         return '⁊';
     }
+    void rollStats() {
+        int[] rolledStats = new int[6];
+        int[] rolledNumbers = new int[4];
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 4; j++) {
+                int helper = r.nextInt(6) + 1;
+                rolledNumbers[i] = helper;
+            }
+            for (int j = 0; j < 4 - 1; j++) {
+                for (int k = 0; k < 4 - j - 1; k++) {
+                    if (rolledNumbers[j] > rolledNumbers[j + 1]) {
+                        int temp = rolledNumbers[j];
+                        rolledNumbers[j] = rolledNumbers[j + 1];
+                        rolledNumbers[j + 1] = temp;
+                    }
+                }
+            }
+            rolledStats[i] = rolledNumbers[1] + rolledNumbers[2] + rolledNumbers[3];
+            System.out.println(rolledStats[i]);
+        }
+    }
 }
