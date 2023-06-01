@@ -1,29 +1,31 @@
 package com.company;
 import java.util.Random;
 public class Main {
-
     public static void main(String[] args) {
-        dice dice1 = new dice(12, new char[]{'@', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '?'},
-                false, new int[]{0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1}
-        );
-        dice dice2 = new dice(4, new char[]{'1','2','3','4'},false, new int[] {15,15,15,55});
+    rollStats();
+    }
+    //a method to roll stats for dnd, rolls four numbers and then sorts them lowest to highest. adds the three highest numbers together to give proper dnd stats
+    static void rollStats() {
         Random r = new Random();
-        int y = 0;
-        int z = 0;
-        for (int i = 0; i < 100; i++) {
-            char x = dice1.roll();
-            //int x = r.nextInt(2);
-            System.out.println(x);
-            if (x == '6') {
-                y += 1;
+        int[] rolledStats = new int[6];
+        int[] rolledNumbers = new int[4];
+        for (int k = 0; k < 6; k++) {
+            for (int i = 0; i < 4; i++) {
+                int helper = r.nextInt(6) + 1;
+                rolledNumbers[i] = helper;
             }
-            if (x == '?') {
-                z += 1;
+            for (int i = 0; i < rolledNumbers.length; i++) {
+                for (int j = i + 1; j < rolledNumbers.length; j++) {
+                    if (rolledNumbers[i] > rolledNumbers[j]) {
+                        int temp = rolledNumbers[i];
+                        rolledNumbers[i] = rolledNumbers[j];
+                        rolledNumbers[j] = temp;
+                    }
+                }
             }
+            rolledStats[k] = rolledNumbers[1] + rolledNumbers[2] + rolledNumbers[3];
+            System.out.println("Numbers on dice: " + rolledNumbers[0] + " " + rolledNumbers[1] + " " + rolledNumbers[2] + " " + rolledNumbers[3]);
+            System.out.println("Stat: " + rolledStats[k]);
         }
-        int e = 100-(y+z);
-        System.out.println("num of sixes: " + y);
-        System.out.println("num of questions: " + z);
-        System.out.println("num of errors: " + e);
     }
 }
