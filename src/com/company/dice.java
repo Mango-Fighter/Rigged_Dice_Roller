@@ -3,16 +3,19 @@ import java.util.Random;
 import java.util.Scanner;
 public class dice {
     //dice properties
+    String identifier;
     int numOfSides;
     char[] dataOnSides;
     boolean isFair;
     int[] sideProbabilities;
+    //establish a couple objects
     Random r = new Random();
     Scanner input = new Scanner(System.in);
     //dice constructor
-    dice(int numOfSides, char[] dataOnSides, boolean isFair, int[] sideProbabilities) {
+    dice(String identifier, int numOfSides, char[] dataOnSides, boolean isFair, int[] sideProbabilities) {
 
         //use arguments to set the values for your properties
+        this.identifier = identifier;
         this.numOfSides = numOfSides;
         this.dataOnSides = dataOnSides;
         this.isFair = isFair;
