@@ -1,5 +1,6 @@
 package com.company;
 import java.util.Random;
+import java.util.Scanner;
 public class dice {
     //dice properties
     int numOfSides;
@@ -7,7 +8,7 @@ public class dice {
     boolean isFair;
     int[] sideProbabilities;
     Random r = new Random();
-
+    Scanner input = new Scanner(System.in);
     //dice constructor
     dice(int numOfSides, char[] dataOnSides, boolean isFair, int[] sideProbabilities) {
 
@@ -28,7 +29,6 @@ public class dice {
         else {
             this.sideProbabilities = sideProbabilities;
         }
-
     }
 
     //a method to roll the dice, adds all the probabilities together and then checks each side, if it is greater than the range it subtracts the side from the range and repeats until the right side is found
