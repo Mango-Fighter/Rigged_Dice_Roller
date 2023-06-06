@@ -1,12 +1,12 @@
 package com.company;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList diceList = new ArrayList();
-        userInterface theUI = new userInterface();
-        diceList.add(theUI.addDice());
+        graphicalUI GUI = new graphicalUI();
+
     }
     //a method to roll stats for dnd, rolls four numbers and then sorts them lowest to highest. adds the three highest numbers together to give proper dnd stats
     static void rollStats() {
