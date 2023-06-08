@@ -40,5 +40,6 @@ public class userInterface {
         dice Dice01 = new dice(identifier, numOfSides, sidesData, isFair, probabilities);
         return Dice01;
     }
+
 }
 

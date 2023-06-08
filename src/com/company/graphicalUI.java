@@ -1,27 +1,34 @@
 package com.company;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class graphicalUI {
+    userInterface theUI = new userInterface();
     public graphicalUI() {
         //create the window
         JFrame f = new JFrame("Lorem Ipsum");
-        //create the button
-        JButton b = new JButton("Dolor Sit Amet");
-        //create the label
-        JLabel l = new JLabel("Consectetur adipiscing elit");
-        l.setBounds(170,100,60,60);
-        //x, y, width, height
-        b.setBounds(170,170,60,30);
         //set size of the window (width,height)
-        f.setSize(400,400);
+        f.setSize(600,400);
         //set behavior when closed
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         //layout has already been managed
         f.setLayout(null);
         //make it visible
         f.setVisible(true);
-        //add a button and a label
+        //make a text field
+        final JTextField tf = new JTextField();
+        tf.setBounds(250,75,100,50);
+        //make a button
+        JButton b = new JButton("Dolor Sit Amet");
+        b.setBounds(250, 175, 100, 50);
+        b.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                theUI.addDice();
+            }
+
+        });
+        //add a button
         f.add(b);
-        f.add(l);
+        f.add(tf);
     }
 }
