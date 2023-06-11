@@ -11,30 +11,31 @@ public class graphicalUI extends Frame implements ActionListener{
     JButton b03;
     JButton b04;
     JButton b05;
-    public void actionPerformed (ActionEvent e) {}
+    JTextArea ta;
+    JTextField tf;
+    //makes the button do things when pressed, in this case remove the text area and replace it with a new one
+    public void actionPerformed (ActionEvent e) {
+        f.remove(ta);
+        ta = new JTextArea("This is a test");
+        ta.setBounds(250,25,100,150);
+        f.add(ta);
+    }
     public graphicalUI() {
         //create the window
-
+        f = new JFrame("Lorem Ipsum");
         //set size of the window (width,height)
-        f.setSize(600,400);
-        //set behavior when closed
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        f.setSize(1280,720);
         //layout has already been managed
         f.setLayout(null);
         //make it visible
         f.setVisible(true);
         //make a text field
-        final JTextField tf = new JTextField();
-        tf.setBounds(250,75,100,50);
+        ta = new JTextArea();
+        ta.setBounds(250,25,100,150);
         //make a button
         b01 = new JButton("Dolor Sit Amet");
-        b01.setBounds(250, 175, 100, 50);
-        b01.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                theUI.addDice();
-            }
-
-        });
+        b01.setBounds(250,175, 100, 50);
+        b01.addActionListener(this);
         //add a button
         f.add(b01);
         f.add(tf);
