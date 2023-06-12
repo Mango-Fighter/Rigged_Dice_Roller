@@ -3,9 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class graphicalUI extends Frame implements ActionListener{
-    userInterface theUI = new userInterface();
-    JFrame f;
+public class graphicalUI {
+    //declare variables
+    JFrame f = new JFrame("Dice Roller");
     JButton b01;
     JButton b02;
     JButton b03;
@@ -14,30 +14,45 @@ public class graphicalUI extends Frame implements ActionListener{
     JTextArea ta;
     JTextField tf;
     //makes the button do things when pressed, in this case remove the text area and replace it with a new one
-    public void actionPerformed (ActionEvent e) {
-        f.remove(ta);
-        ta = new JTextArea("This is a test");
-        ta.setBounds(250,25,100,150);
-        f.add(ta);
-    }
     public graphicalUI() {
-        //create the window
-        f = new JFrame("Lorem Ipsum");
         //set size of the window (width,height)
         f.setSize(1280,720);
         //layout has already been managed
         f.setLayout(null);
         //make it visible
         f.setVisible(true);
-        //make a text field
-        ta = new JTextArea();
-        ta.setBounds(250,25,100,150);
-        //make a button
-        b01 = new JButton("Dolor Sit Amet");
-        b01.setBounds(250,175, 100, 50);
-        b01.addActionListener(this);
-        //add a button
+        //make a text area
+        ta = new JTextArea("Testing");
+        ta.setBounds(440,210,100,150);
+        ta.setOpaque(true);
+        //make buttons
+        b01 = new JButton("Main Menu");
+        b01.setBounds(340, 360, 100,50);
+        b01.setOpaque(true);
+        b01.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //add main menu method here once implemented
+                f.remove(ta);
+                ta = new JTextArea("This is working :)");
+                ta.setBounds(440,210,100,150);
+                f.add(ta);
+            }
+        });
+        b02 = new JButton("Exit");
+        b02.setBounds(540,360, 100, 50);
+        b02.setOpaque(true);
+        b02.addActionListener(new ActionListener() {
+           public void actionPerformed (ActionEvent e){
+               System.exit(12);
+           }
+        });
+        //add components
         f.add(b01);
-        f.add(tf);
+        f.add(b02);
+        f.add(ta);
+    }
+    public void mainMenu() {
+
+
     }
 }
