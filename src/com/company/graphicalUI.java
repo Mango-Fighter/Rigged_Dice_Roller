@@ -19,23 +19,16 @@ public class graphicalUI {
         f.setSize(1280,720);
         //layout has already been managed
         f.setLayout(null);
-        //make it visible
-        f.setVisible(true);
         //make a text area
         ta = new JTextArea("Testing");
-        ta.setBounds(440,210,100,150);
+        ta.setBounds(512,96,256,144);
         ta.setOpaque(true);
         //make buttons
         b01 = new JButton("Main Menu");
-        b01.setBounds(340, 360, 100,50);
-        b01.setOpaque(true);
+        b01.setBounds(106, 480, 150,50);
         b01.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //add main menu method here once implemented
-                f.remove(ta);
-                ta = new JTextArea("This is working :)");
-                ta.setBounds(440,210,100,150);
-                f.add(ta);
+                mainMenu();
             }
         });
         b02 = new JButton("Exit");
@@ -50,9 +43,31 @@ public class graphicalUI {
         f.add(b01);
         f.add(b02);
         f.add(ta);
+        f.setVisible(true);
     }
     public void mainMenu() {
-
-
+        //remove the buttons so you can't see the old buttons
+        f.remove(b01);
+        f.remove(b02);
+        //updates the frame
+        f.update(f.getGraphics());
+        //create the buttons
+        b01 = new JButton("Create a Dice");
+        b01.setBounds(53, 480, 150, 50 );
+        b02 = new JButton("Roll a Dice");
+        b02.setBounds(309, 480, 150, 50 );
+        b03 = new JButton("Custom Roll");
+        b03.setBounds(565, 480, 150, 50 );
+        b04 = new JButton("Roll D&D Ability Scores");
+        b04.setBounds(821, 480, 150, 50 );
+        b05 = new JButton("View History");
+        b05.setBounds(1077, 480, 150, 50 );
+        //add the buttons and update the frame
+        f.add(b01);
+        f.add(b02);
+        f.add(b03);
+        f.add(b04);
+        f.add(b05);
+        f.update(f.getGraphics());
     }
 }
